@@ -14,7 +14,7 @@ const InputRecord = () => {
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
             });
-            console.log(resposne)
+            window.location = "/"; //refresh once response has been sent
         } catch (error) {
             console.log(error.message)
         }
