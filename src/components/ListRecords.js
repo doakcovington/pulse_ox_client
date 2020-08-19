@@ -16,6 +16,17 @@ const ListRecords = () => {
     useEffect(() => {
         getRecords();
     }, [])
+
+    const deleteRecord = async (id) => {
+        try {
+            const removeRecord = await fetch(`http://localhost:5000/records/${id}`, {
+                method: "DELETE"
+            })
+            setRecords(records.filter(record => record.id !== id)); //returns records that don't match id of deleted record
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
     
     return (
         <Fragment>
@@ -30,10 +41,10 @@ const ListRecords = () => {
                 </thead>
                 <tbody>
                     {records.map(record => (
-                        <tr>
+                        <tr key={record.id}>
                             <td key={record.date}>{record.date}</td>
                             <td key={record.oxygen}>{record.oxygen}</td>
-                            <td key={record.id}><button className="btn btn-danger">X</button></td>
+                            <td><button className="btn btn-danger" onClick={() => deleteRecord(record.id)}>X</button></td>
                         </tr>
                     ))}
                 </tbody>
