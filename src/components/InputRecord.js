@@ -2,8 +2,8 @@ import React, {  Fragment, useState } from 'react';
 
 const InputRecord = () => {
 
-    const [date, setDate] = useState();
-    const [oxygen, setOxygen] = useState();
+    const [date, setDate] = useState(new Date()); //Set date 
+    const [oxygen, setOxygen] = useState("Oxygen %"); //Set oxygen
 
     const onSubmitForm = async(e) => {
         e.preventDefault();
