@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { format } from "date-fns"; 
 
 const ListRecords = () => {
 
@@ -42,7 +43,7 @@ const ListRecords = () => {
                 <tbody>
                     {records.map(record => (
                         <tr key={record.id}>
-                            <td key={record.date}>{record.date}</td>
+                            <td key={record.date}>{format(new Date(record.date), 'MM/dd/yyyy')}</td>
                             <td key={record.oxygen}>{record.oxygen}</td>
                             <td><button className="btn btn-danger" onClick={() => deleteRecord(record.id)}>X</button></td>
                         </tr>
