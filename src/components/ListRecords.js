@@ -43,8 +43,8 @@ const ListRecords = () => {
                 <tbody>
                     {records.map(record => (
                         <tr key={record.id}>
-                            <td key={record.date}>{format(new Date(record.date), 'MM/dd/yyyy')}</td>
-                            <td key={record.oxygen}>{record.oxygen}</td>
+                            <td>{format(new Date(record.date), 'MM/dd/yyyy')}</td>
+                            <td className={record.oxygen <= 93 ? "bg-danger text-white" : "bg-white"}>{record.oxygen}</td>
                             <td><button className="btn btn-danger" onClick={() => deleteRecord(record.id)}>X</button></td>
                         </tr>
                     ))}
